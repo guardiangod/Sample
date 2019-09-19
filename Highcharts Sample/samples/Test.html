@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>First Chart</title>
+		<script src="../js/jquery-1.12.2.min.js"></script>
+		<script src="../js/highcharts.js"></script>
+		<script src="../js/themes/sand-signika.js"></script>
+	</head>
+	<body>
+		<div id="container" style="width:600px; height:400px;"></div>
+	</body>
+</html>
+<script>
+$(function () {
+	var chart = new Highcharts.Chart({
+		chart: {
+			renderTo: 'container'
+		},
+		
+		tooltip: {
+			backgroundColor: '#FCFFC5'
+		},
+		
+	  series: [{
+		type: 'pie',
+		data: [
+			{y: 84, name:"ABC & DEF 502"}			
+			,{y: 6361, name:"ABC & DEF 232"}
+			,{y: 86, name:"ABC & DEF 799"}
+			,{y: 361, name:"Remainder"}
+			,{y: 85, name:"ABC & DEF 359"}
+			,{y: 294, name:"ABC & DEF 802"}
+			,{y: 86, name:"ABC & DEF 703"}
+			,{y: 244, name:"ABC & DEF 478"}
+			,{y: 87, name:"ABC & DEF 805"}
+			,{y: 239, name:"ABC & DEF 241"}
+			,{y: 92, name:"ABC & DEF 592"}
+			,{y: 239, name:"ABC & DEF 698"}
+			,{y: 93, name:"ABC & DEF 711"}
+			,{y: 217, name:"ABC & DEF 236"}
+			,{y: 119, name:"ABC & DEF 480"}
+			,{y: 202, name:"ABC & DEF 344"}
+			,{y: 132, name:"ABC & DEF 237"}
+			,{y: 182, name:"ABC & DEF 123"}
+			,{y: 138, name:"ABC & DEF 234"}
+			,{y: 159, name:"ABC & DEF 6"}
+			,{y: 154, name:"ABC & DEF 122"}
+		]
+	  }]
+	});
+});
+</script>

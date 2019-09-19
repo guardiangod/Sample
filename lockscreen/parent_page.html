@@ -1,0 +1,96 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<title>Lock Screen</title>
+		<link rel="stylesheet" href="style.css"/>
+		<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+		<script src="http://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
+		<script>
+		$(document).ready(function() {
+            $('#linkOpenWindow').on('click', function (e) {
+                e.preventDefault();
+				
+				var url = $("#linkOpenWindow").attr('href');
+				var $popupWindow = $("<div id='target'></div>")
+						.html('<iframe src="' + url + '" width="100%" height="100%"></iframe>')
+						.dialog({
+							resizable: false,
+							autoOpen: false,
+							height: 500,
+							width: 900,
+							my: 'center',	// to set position in center
+							at: 'center',	// to set position in center
+							of: window,		// to set position in center
+							show: 'fold',
+							modal: true,
+							open: function(event, ui) { $(".ui-dialog-titlebar", ui.dialog | ui).hide(); },
+							closeOnEscape: false,
+							close: function(event, ui) { lockScreen(false); },
+							buttons: [{
+								  text: "Ok",
+								  click: function() { $( this ).dialog("close").dialog("destroy"); }
+							}]
+						});
+				
+				lockScreen(true);				
+                $popupWindow.dialog("open");
+				
+				return false;
+            });
+		});
+		
+		function lockScreen(flag) {
+			if (flag) {
+				$('#curtain').addClass("loading-overlay");
+			} else {
+				$('#curtain').removeClass("loading-overlay");
+			}
+			toggleFullScreen(flag);
+		}
+		// toggle full screen
+		function toggleFullScreen(flag) {
+			if (flag && !document.fullscreenElement &&    // alternative standard method
+				!document.mozFullScreenElement && !document.webkitFullscreenElement) {  // current working methods
+				if (document.documentElement.requestFullscreen) {
+					document.documentElement.requestFullscreen();
+				} else if (document.documentElement.mozRequestFullScreen) {
+					document.documentElement.mozRequestFullScreen();
+				} else if (document.documentElement.webkitRequestFullscreen) {
+					document.documentElement.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+				}
+			} else {
+				if (document.cancelFullScreen) {
+					document.cancelFullScreen();
+				} else if (document.mozCancelFullScreen) {
+					document.mozCancelFullScreen();
+				} else if (document.webkitCancelFullScreen) {
+					document.webkitCancelFullScreen();
+				}
+			}
+		}
+		// mozfullscreenerror event handler
+		function errorHandler() {
+			alert('mozfullscreenerror');
+		}
+		document.documentElement.addEventListener('mozfullscreenerror', errorHandler, false);
+		</script>
+	</head>
+	<body>
+		<div id='curtain'></div>
+		<div id='mainContent'>
+			<table>
+				<tr>
+					<td>
+						<label>Application No.:</label>
+						<input type='text' value=''/>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<a id="linkOpenWindow" href="child_page.html">Click me to test!</a>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Highcharts Samples</title>
+		<script src="js/jquery-1.12.2.min.js"></script>
+		<style>
+			.desc {
+				font-style: italic;
+				color: #999999;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Highcharts Samples</h1>
+		<ul>
+			<li><a href="samples/FirstChart.html">First Chart</a></li>
+			<li><a href="samples/ChartRotation.html">Chart Rotation</a> <span class="desc">(3D Column, the Options object)<span></li>
+			<li><a href="samples/GlobalOptions.html">Global Options</a> <span class="desc">(custom Theme)<span></li>
+			<li><a href="samples/SeriesOptions1.html">Series Options 1</a> <span class="desc">(point Selection, line Width, data Label)<span></li>
+			<li><a href="samples/SeriesOptions2.html">Series Options 2</a> <span class="desc">(Dash Style, Zones, and their combination)<span></li>
+			<li><a href="samples/CombinationChart.html">Combination Chart</a></li>
+			<li><a href="samples/Drilldown.html">Drilldown</a></li>
+		</ul>
+	</body>
+</html>
+<script  type="text/javascript">
+$(document).ready(function () {
+    $('a').click(function(e) {
+		e.preventDefault();
+		var link = $(this).attr('href');
+		//$(this).attr('target', '_blank');
+		openNewTab(link);
+	});
+});
+
+function openNewTab(link) {
+    var frm = $('<form method="get" action="' + link + '" target="_blank"></form>')
+    $("body").append(frm);
+    frm.submit().remove();
+}
+</script>

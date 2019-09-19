@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Combination Chart</title>
+		<script src="../js/jquery-1.12.2.min.js"></script>
+		<script src="../js/highcharts.js"></script>
+		<script src="../js/exporting.js"></script>
+	</head>
+	<body>
+		<div id="container" style="width:100%; height:500px;"></div>
+	</body>
+</html>
+<script>
+$(function() {
+	$('#container').highcharts({
+		title: {
+			text: 'Combination Chart'
+		},
+		xAxis: {
+			categories: ['Apples', 'Oranges', 'Pears', 'Bananas', 'Plums']
+		},
+		labels: {
+			items: [{
+				html: 'Total fruit consumption',
+				style: {
+					left: '30px',
+					top: '5px',
+					color: (Highcharts.theme && Highcharts.theme.textColor) || 'orange',
+				}
+			}]
+		},
+		series: [{
+			type: 'column',
+			name: 'Jane',
+			data: [61,79,26,20,96]
+		}, {
+			type: 'column',
+			name: 'John',
+			data: [21,80,68,11,97]
+		}, {
+			type: 'column',
+			name: 'Joe',
+			data: [73,84,90,69,100]
+		}, {
+			type: 'spline',
+			name: 'Average',
+			data: [51.7,81,61.3,33.3,97.7],
+			marker: {	// format style of points
+				lineWidth: 2,
+				lineColor: Highcharts.getOptions().colors[5],
+				fillColor: 'white'
+			}
+		}, {
+			type: 'pie',
+			name: 'Total Consumption',
+			data: [{
+				name: 'Jane',
+				y: 282,
+				color: Highcharts.getOptions().colors[0]	// Jane's color
+			}, {
+				name: 'John',
+				y: 277,
+				color: Highcharts.getOptions().colors[1]	// John's color
+			}, {
+				name: 'Joe',
+				y: 416,
+				color: Highcharts.getOptions().colors[2]	// Joe's color
+			}],
+			center: [70, 60],
+			size: 100,
+			showInLegend: false,
+			dataLabels: {
+				enabled: false
+			}
+		}]
+	});
+})
+</script>

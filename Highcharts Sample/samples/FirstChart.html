@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>First Chart</title>
+		<script src="../js/jquery-1.12.2.min.js"></script>
+		<script src="../js/highcharts.js"></script>
+		<script src="../js/themes/sand-signika.js"></script>
+	</head>
+	<body>
+		<div id="container" style="width:100%; height:400px;"></div>
+	</body>
+</html>
+<script>
+$(function () {
+	$('#container').highcharts({
+		chart: {
+			type: 'bar'
+		},
+		title: {
+			text: 'Fruit Consumption'
+		},
+		xAxis: {
+			categories: ['Apples', 'Bananas', 'Orages']
+		},
+		yAxix: {
+			title: {
+				text: 'Fruit eaten'
+			}
+		},
+		series: [{
+			name: 'Jane',
+			data: [1, 5, 4]
+		}, {
+			name: 'John',
+			data: [6, 2, 3]
+		}]
+	});
+});
+</script>
